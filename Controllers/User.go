@@ -2,7 +2,7 @@ package Controllers
 
 import (
 	"fmt"
-	"../Models"
+	"github.com/mrbardia72/sample-gorm-gin/Models"
 	"net/http"
 	"github.com/gin-gonic/gin"
 )

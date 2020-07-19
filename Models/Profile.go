@@ -2,7 +2,7 @@ package Models
 
 import (
 	"fmt"
-	"../Config"
+	"github.com/mrbardia72/sample-gorm-gin/Config"
 	_ "github.com/go-sql-driver/mysql"
 )
 
