@@ -2,14 +2,14 @@ package main
 
 import (
 	"github.com/mrbardia72/sample-gorm-gin/config"
-	"github.com/mrbardia72/sample-gorm-gin/models"
+	"github.com/mrbardia72/sample-gorm-gin/models/profile"
 	"github.com/mrbardia72/sample-gorm-gin/routes"
 	"fmt"
 	"github.com/jinzhu/gorm"
 )
 
 var err error
-
+ 
 func main() {
 	config.DB, err = gorm.Open("mysql", config.DbURL(config.BuildDBConfig()))
 
@@ -18,7 +18,7 @@ func main() {
 	}
 
 	defer config.DB.Close()
-	config.DB.AutoMigrate(&models.Profile{})
+	config.DB.AutoMigrate(&profile.Profile{})
 
 	r := routes.SetupRouter()
 	//running

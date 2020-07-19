@@ -1,10 +1,10 @@
-package models
+package profile
 
 import (
 	"fmt"
 	"github.com/mrbardia72/sample-gorm-gin/config"
 	_ "github.com/go-sql-driver/mysql"
-)
+) 
 
 //GetAllUsers Fetch all user data
 func GetAllProfiles(profile *[]Profile) (err error) {
