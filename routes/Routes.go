@@ -6,7 +6,10 @@ import (
 )
 
 func SetupRouter() *gin.Engine {
+
 	r := gin.Default()
+
+	//routers profile(users)
 	grp1 := r.Group("/v1/api/profile")
 	{
 		grp1.GET("/read", controllers.GetProfiles)
@@ -15,5 +18,12 @@ func SetupRouter() *gin.Engine {
 		grp1.PUT("/update/:id", controllers.UpdateProfile)
 		grp1.DELETE("/delete/:id", controllers.DeleteProfile)
 	}
+
+	// routes posts
+	grp2 := r.Group("/v1/api/post")
+	{
+		
+	}
+
 	return r
 }
