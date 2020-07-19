@@ -1,16 +1,16 @@
-package Controllers
+package controllers
 
 import (
 	"fmt"
-	"github.com/mrbardia72/sample-gorm-gin/Models"
+	"github.com/mrbardia72/sample-gorm-gin/models"
 	"net/http"
 	"github.com/gin-gonic/gin"
 )
 
 //GetProfiles ... Get all profiles
 func GetProfiles(c *gin.Context) {
-	var profile []Models.Profile
-	err := Models.GetAllProfiles(&profile)
+	var profile []models.Profile
+	err := models.GetAllProfiles(&profile)
 	if err != nil {
 		c.AbortWithStatus(http.StatusNotFound)
 	} else {
@@ -21,9 +21,9 @@ func GetProfiles(c *gin.Context) {
 //CreateProfile ... Create Profile
 func CreateProfile(c *gin.Context) {
 
-	var profile Models.Profile
+	var profile models.Profile
 	c.BindJSON(&profile)
-	err := Models.CreateProfile(&profile)
+	err := models.CreateProfile(&profile)
 	if err != nil {
 		fmt.Println(err.Error())
 		c.AbortWithStatus(http.StatusNotFound)
@@ -35,8 +35,8 @@ func CreateProfile(c *gin.Context) {
 //GetSearch ... Get the user by name
 func GetSearch(c *gin.Context) {
 	name := c.Params.ByName("name") 
-	var profile Models.Profile
-	err := Models.GetSearch(&profile, name)
+	var profile models.Profile
+	err := models.GetSearch(&profile, name)
 	if err != nil {
 		c.AbortWithStatus(http.StatusNotFound)
 	} else {
@@ -46,14 +46,14 @@ func GetSearch(c *gin.Context) {
 
 //Updateprofile ... Update the profile information
 func UpdateProfile(c *gin.Context) {
-	var profile Models.Profile
+	var profile models.Profile
 	id := c.Params.ByName("id")
-	err := Models.GetProfileByID(&profile, id)
+	err := models.GetProfileByID(&profile, id)
 	if err != nil {
 		c.JSON(http.StatusNotFound, profile)
 	}
 	c.BindJSON(&profile)
-	err = Models.UpdateProfile(&profile, id)
+	err = models.UpdateProfile(&profile, id)
 	if err != nil {
 		c.AbortWithStatus(http.StatusNotFound)
 	} else {
@@ -63,9 +63,9 @@ func UpdateProfile(c *gin.Context) {
 
 //Deleteprofile ... Delete the profile
 func DeleteProfile(c *gin.Context) {
-	var profile Models.Profile
+	var profile models.Profile
 	id := c.Params.ByName("id")
-	err := Models.DeleteProfile(&profile, id)
+	err := models.DeleteProfile(&profile, id)
 	if err != nil {
 		c.AbortWithStatus(http.StatusNotFound)
 	} else {
