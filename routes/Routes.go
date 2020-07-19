@@ -20,10 +20,10 @@ func SetupRouter() *gin.Engine {
 	}
 
 	// routes posts
-	grp2 := r.Group("/v1/api/post")
-	{
+	// grp2 := r.Group("/v1/api/post")
+	// {
 		
-	}
+	// }
 
 	return r
 }
