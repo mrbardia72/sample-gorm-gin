@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/mrbardia72/sample-gorm-gin/config"
-	"github.com/mrbardia72/sample-gorm-gin/models/profile"
+	"github.com/mrbardia72/sample-gorm-gin/models"
 	"github.com/mrbardia72/sample-gorm-gin/routes"
 	"fmt"
 	"github.com/jinzhu/gorm"
@@ -19,7 +19,7 @@ func main() {
 
 	defer config.DB.Close()
 	
-	config.DB.AutoMigrate(&profile.Profile{})
+	config.DB.AutoMigrate(&models.Profile{})
 
 	r := routes.SetupRouter() 
 
