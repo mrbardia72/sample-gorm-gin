@@ -20,10 +20,16 @@ func GetProfiles(c *gin.Context) {
 
 //CreateProfile ... Create Profile
 func CreateProfile(c *gin.Context) {
-
 	var profilex profile.Profile
+
+	if err := c.ShouldBindJSON(&profilex); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
 	c.BindJSON(&profilex)
 	err := profile.CreateProfile(&profilex)
+
 	if err != nil {
 		fmt.Println(err.Error())
 		c.AbortWithStatus(http.StatusNotFound)
