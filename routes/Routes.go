@@ -2,6 +2,7 @@ package routes
 
 import (
 	"github.com/mrbardia72/sample-gorm-gin/controllers"
+	"github.com/mrbardia72/sample-gorm-gin/controllers/post"
 	"github.com/gin-gonic/gin"
 )
 
@@ -22,7 +23,7 @@ func SetupRouter() *gin.Engine {
 	// routes posts
 	grp2 := r.Group("/v2/api/post")
 	{
-		grp2.GET("/read", controllers.Getposts)
+		grp2.GET("/read", post.Getposts)
 	}
 	return r
 }

@@ -5,7 +5,7 @@ import (
 	"github.com/mrbardia72/sample-gorm-gin/config"
 	 "github.com/mrbardia72/sample-gorm-gin/models"
 	_ "github.com/go-sql-driver/mysql"
-) 
+)  
 
 //GetAllposts Fetch all user data
 func GetAllposts(post *[]models.Post) (err error) {

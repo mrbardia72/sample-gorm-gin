@@ -49,7 +49,7 @@ func GetSearchUser(c *gin.Context) {
 	var userx models.User
 	err := repository.GetSearchUser(&userx, name)
 	if err != nil {
-		errorx:=helpers.Errorx{Msgx:"There is no such record",Codex:"404"}
+		errorx:=helpers.Errorx{Msgx:"There is no such recordxxx",Codex:"404"}
 		c.JSON(http.StatusNotFound,errorx)
 	} else {
 		c.JSON(http.StatusOK, userx)
@@ -79,10 +79,12 @@ func DeleteUser(c *gin.Context) {
 	var userx models.User
 	id := c.Params.ByName("id")
 	err := repository.DeleteUser(&userx, id)
+
 	if err != nil {
 		errorx:=helpers.Errorx{Msgx:"not delete a record",Codex:"404"}
 		c.JSON(http.StatusNotFound,errorx)
 	} else {
 		c.JSON(http.StatusOK, gin.H{"id" + id: "is deleted"})
 	}
+	
 }
