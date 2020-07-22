@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"fmt"
+	// "fmt"
 	"github.com/mrbardia72/sample-gorm-gin/repository"
 	"github.com/mrbardia72/sample-gorm-gin/models"
 	"net/http"
@@ -13,11 +13,14 @@ import (
 func GetUsers(c *gin.Context) {
 	var userx []models.User
 	err := repository.GetAllUsers(&userx)
+
 	if err != nil {
-		c.AbortWithStatus(http.StatusNotFound,)
+		errorx:=helpers.Errorx{Msgx:"error not get all users becaus empty table user",Codex:"404"}
+		c.JSON(http.StatusNotFound,errorx)
 	} else {
 		c.JSON(http.StatusOK, userx)
 	}
+
 }
 
 //CreateUser ... Create user
@@ -33,8 +36,8 @@ func CreateUser(c *gin.Context) {
 	err := repository.CreateUser(&userx)
 
 	if err != nil {
-		fmt.Println(err.Error())
-		c.AbortWithStatus(http.StatusNotFound)
+		errorx:=helpers.Errorx{Msgx:"error create to db",Codex:"404"}
+		c.JSON(http.StatusNotFound,errorx)
 	} else {
 		c.JSON(http.StatusOK, userx)
 	}
@@ -64,7 +67,8 @@ func UpdateUser(c *gin.Context) {
 	c.BindJSON(&userx)
 	err = repository.UpdateUser(&userx, id)
 	if err != nil {
-		c.AbortWithStatus(http.StatusNotFound)
+		errorx:=helpers.Errorx{Msgx:"not update a record",Codex:"404"}
+		c.JSON(http.StatusNotFound,errorx)
 	} else {
 		c.JSON(http.StatusOK, userx)
 	}
@@ -76,7 +80,8 @@ func DeleteUser(c *gin.Context) {
 	id := c.Params.ByName("id")
 	err := repository.DeleteUser(&userx, id)
 	if err != nil {
-		c.AbortWithStatus(http.StatusNotFound)
+		errorx:=helpers.Errorx{Msgx:"not delete a record",Codex:"404"}
+		c.JSON(http.StatusNotFound,errorx)
 	} else {
 		c.JSON(http.StatusOK, gin.H{"id" + id: "is deleted"})
 	}

@@ -29,13 +29,10 @@ func CreateUser(user *models.User) (err error) {
 func GetSearchUser(user *models.User, name string) (err error) {
 
 	if err = config.DB.Where("name = ?", name).Find(&user).Error; err != nil {
-		
 		info:="There is no such record"
 		helpers.LogApi(info)
 		return 
-		 
 	} else { 
-		
 		config.DB.Preload("Posts").Find(&user)
 		info:=" Successfully search User "
 		helpers.LogApi(info)
