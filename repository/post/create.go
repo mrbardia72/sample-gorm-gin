@@ -1,2 +1,2 @@
-package user
+package post
 
