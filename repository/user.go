@@ -8,7 +8,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/mrbardia72/blog-gorm-gorilla/src/helpers"
 )
-
+ 
 //GetAllUsers Fetch all user data
 func GetAllUsers(user *[]models.User) (err error) {
 	if err = config.DB.Find(user).Error; err != nil {
