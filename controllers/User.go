@@ -33,7 +33,7 @@ func CreateUser(c *gin.Context) {
 	}
 
 	c.BindJSON(&userx)
-	err := repository.CreateUser(&userx)
+	err := repo_user.CreateUser(&userx)
 
 	if err != nil {
 		errorx:=helpers.Errorx{Msgx:"error create to db",Codex:"404"}
@@ -47,7 +47,7 @@ func CreateUser(c *gin.Context) {
 func GetSearchUser(c *gin.Context) {
 	name := c.Params.ByName("name") 
 	var userx models.User
-	err := repository.GetSearchUser(&userx, name)
+	err := repo_user.GetSearchUser(&userx, name)
 	if err != nil {
 		errorx:=helpers.Errorx{Msgx:"There is no such recordxxx",Codex:"404"}
 		c.JSON(http.StatusNotFound,errorx)
@@ -60,12 +60,12 @@ func GetSearchUser(c *gin.Context) {
 func UpdateUser(c *gin.Context) {
 	var userx models.User
 	id := c.Params.ByName("id")
-	err := repository.GetSearchUser(&userx, id) 
+	err := repo_user.GetSearchUser(&userx, id) 
 	if err != nil {
 		c.JSON(http.StatusNotFound, userx)
 	}
 	c.BindJSON(&userx)
-	err = repository.UpdateUser(&userx, id)
+	err = repo_user.UpdateUser(&userx, id)
 	if err != nil {
 		errorx:=helpers.Errorx{Msgx:"not update a record",Codex:"404"}
 		c.JSON(http.StatusNotFound,errorx)
@@ -78,7 +78,7 @@ func UpdateUser(c *gin.Context) {
 func DeleteUser(c *gin.Context) {
 	var userx models.User
 	id := c.Params.ByName("id")
-	err := repository.DeleteUser(&userx, id)
+	err := repo_user.DeleteUser(&userx, id)
 
 	if err != nil {
 		errorx:=helpers.Errorx{Msgx:"not delete a record",Codex:"404"}

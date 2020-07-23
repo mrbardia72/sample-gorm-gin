@@ -11,9 +11,11 @@ import (
 //GetAllposts Fetch all user data
 func GetAllposts(post *[]models.Post) (err error) {
 	if err = config.DB.Find(post).Error; err != nil {
+		info:=" error, get all posts "
+		helpers.LogApi(info)
 		return err
 	} 
-	info:=" Successfully read all post "
+	info:=" ok, get all posts "
 	helpers.LogApi(info)
 	return nil
 }
