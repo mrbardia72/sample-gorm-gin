@@ -2,7 +2,7 @@ package controllers
 
 import (
 	// "fmt"
-	"github.com/mrbardia72/sample-gorm-gin/repository"
+	repo_user "github.com/mrbardia72/sample-gorm-gin/repository/user"
 	"github.com/mrbardia72/sample-gorm-gin/models"
 	"net/http"
 	"github.com/gin-gonic/gin"
@@ -12,7 +12,7 @@ import (
 //GetUsers ... Get all users
 func GetUsers(c *gin.Context) {
 	var userx []models.User
-	err := repository.GetAllUsers(&userx)
+	err := repo_user.GetAllUsers(&userx)
 
 	if err != nil {
 		errorx:=helpers.Errorx{Msgx:"error not get all users becaus empty table user",Codex:"404"}

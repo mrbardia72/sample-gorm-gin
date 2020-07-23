@@ -10,13 +10,13 @@ import (
 )
  
 //GetAllUsers Fetch all user data
-func GetAllUsers(user *[]models.User) (err error) {
-	if err = config.DB.Find(user).Error; err != nil {
-		return err
-	}
-	return nil
-}
-
+// func GetAllUsers(user *[]models.User) (err error) {
+// 	if err = config.DB.Find(user).Error; err != nil {
+// 		return err
+// 	}
+// 	return nil
+// }
+ 
 //CreateProfile ... Insert New data
 func CreateUser(user *models.User) (err error) {
 	if err = config.DB.Create(user).Error; err != nil {
