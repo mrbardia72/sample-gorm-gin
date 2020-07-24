@@ -15,6 +15,7 @@ func GetAllposts(post *[]models.Post) (err error) {
 		helpers.LogApi(info)
 		return err
 	} 
+	config.DB.Preload("Users").Find(&post)
 	info:=" ok, get all posts "
 	helpers.LogApi(info)
 	return nil

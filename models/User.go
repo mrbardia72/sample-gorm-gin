@@ -7,7 +7,7 @@ import (
 type User struct {
 	gorm.Model
 	Name    string
-	Email   string	`json:"email" binding:"required"`
+	Email   string
 	Posts []Post `gorm:"ForeignKey:UserID"`
 }
 
