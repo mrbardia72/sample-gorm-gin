@@ -24,6 +24,7 @@ func SetupRouter() *gin.Engine {
 	grp2 := r.Group("/v2/api/post")
 	{
 		grp2.GET("/read", post.Getposts)
+		grp2.POST("/create",post.CreatePost)
 	}
 	return r
 }
