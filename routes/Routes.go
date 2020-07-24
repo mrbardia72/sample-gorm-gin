@@ -13,6 +13,7 @@ func SetupRouter() *gin.Engine {
 	//routers user
 	grp1 := r.Group("/v1/api/user")
 	{
+		grp1.GET("/count", user.CountUser)
 		grp1.GET("/read", user.GetUsers)
 		grp1.POST("/create", user.CreateUser)
 		grp1.GET("/search/:name", user.GetSearchUser)
@@ -23,6 +24,7 @@ func SetupRouter() *gin.Engine {
 	// routes posts
 	grp2 := r.Group("/v2/api/post")
 	{
+		grp1.GET("/count", post.CountPost)
 		grp2.GET("/read", post.Getposts)
 		grp2.POST("/create",post.CreatePost)
 		grp2.PUT("/update/:id", post.UpdatePost)
