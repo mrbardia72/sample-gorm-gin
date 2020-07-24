@@ -5,11 +5,11 @@ import (
 	 "github.com/mrbardia72/sample-gorm-gin/models"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/mrbardia72/blog-gorm-gorilla/src/helpers"
-) 
+)  
+ 
+func GetSearchPost(post *models.Post, id string) (err error) {
 
-func GetSearchPost(post *models.Post, title string) (err error) {
-
-	if err = config.DB.Where("title = ?", title).Find(&post).Error; err != nil {
+	if err = config.DB.Where("id = ?", id).Find(&post).Error; err != nil {
 		
 		info:="There is no such record"
 		helpers.LogApi(info)
