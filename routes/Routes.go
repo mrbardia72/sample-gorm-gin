@@ -24,7 +24,7 @@ func SetupRouter() *gin.Engine {
 	// routes posts
 	grp2 := r.Group("/v2/api/post")
 	{
-		grp1.GET("/count", post.CountPost)
+		grp2.GET("/count", post.CountPost)
 		grp2.GET("/read", post.Getposts)
 		grp2.POST("/create",post.CreatePost)
 		grp2.PUT("/update/:id", post.UpdatePost)
