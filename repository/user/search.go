@@ -5,7 +5,7 @@ import (
 	 "github.com/mrbardia72/sample-gorm-gin/models"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/mrbardia72/blog-gorm-gorilla/src/helpers"
-)
+) 
 
 func GetSearchUser(user *models.User, name string) (err error) {
 
